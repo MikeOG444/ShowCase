@@ -1,0 +1,67 @@
+{
+  "name": "showcase",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A platform for youth athletes to track, earn, and share their sports journey",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "setup": "npm install && npm run setup:all",
+    "setup:all": "npm run setup:web && npm run setup:mobile && npm run setup:api",
+    "setup:web": "cd apps/web && npm install",
+    "setup:mobile": "cd apps/mobile && npm install",
+    "setup:api": "cd apps/api && pip install -r requirements.txt",
+    "dev": "concurrently \"npm run dev:web\" \"npm run dev:api\"",
+    "dev:web": "cd apps/web && npm run dev",
+    "dev:mobile": "cd apps/mobile && npm run start",
+    "dev:api": "cd apps/api && uvicorn main:app --reload",
+    "build": "npm run build:web",
+    "build:web": "cd apps/web && npm run build",
+    "build:mobile": "cd apps/mobile && npm run build",
+    "test": "npm run test:web && npm run test:mobile && npm run test:api",
+    "test:web": "cd apps/web && npm test",
+    "test:mobile": "cd apps/mobile && npm test",
+    "test:api": "cd apps/api && pytest",
+    "test:e2e": "playwright test",
+    "lint": "npm run lint:web && npm run lint:mobile",
+    "lint:web": "cd apps/web && npm run lint",
+    "lint:mobile": "cd apps/mobile && npm run lint",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.5",
+    "@commitlint/config-conventional": "^17.6.5",
+    "@playwright/test": "^1.35.0",
+    "concurrently": "^8.1.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{json,md,yml}": [
+      "prettier --write"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "author": "ShowCase Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/showcase.git"
+  }
+}

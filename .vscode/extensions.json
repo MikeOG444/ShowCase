@@ -1,0 +1,23 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-azuretools.vscode-docker",
+    "mikestead.dotenv",
+    "streetsidesoftware.code-spell-checker",
+    "bradlc.vscode-tailwindcss",
+    "ms-playwright.playwright",
+    "graphql.vscode-graphql",
+    "ms-vsliveshare.vsliveshare",
+    "github.vscode-pull-request-github",
+    "eamodio.gitlens",
+    "yoavbls.pretty-ts-errors",
+    "formulahendry.auto-rename-tag",
+    "naumovs.color-highlight",
+    "wayou.vscode-todo-highlight",
+    "gruntfuggly.todo-tree",
+    "zxh404.vscode-proto3"
+  ]
+}
