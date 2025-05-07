@@ -1,82 +1,93 @@
-# 🔍 activeContext.md
+# Active Context
 
-This document captures the current state of the ShowCase project, including recent work, active decisions, and immediate next steps. It serves as the primary reference for ongoing development activities and ensures continuity across development sessions.
+## Current Focus
 
----
+We're implementing a comprehensive theming system for the ShowCase application, focusing on:
 
-## 🎯 Current Focus
+1. Creating a consistent design system across web and mobile platforms
+2. Supporting light and dark modes with system preference detection
+3. Implementing CSS variables for theme colors
+4. Building reusable UI components with proper theming support
 
-The ShowCase project is currently in the project setup phase. We have established the memory bank documentation and have now set up the initial project structure, including GitHub setup files, project configuration, and basic application structure for both the web and API components.
+## Recent Changes
 
-### Recent Changes
+### Color System Update
 
-- Created and populated core memory bank files:
-  - projectbrief.md: Defined the project vision, goals, and requirements
-  - productContext.md: Outlined the problems being solved and product expectations
-  - systemPatterns.md: Established the system architecture and design patterns
-  - techContext.md: Documented technologies, development setup, and constraints
-  - activeContext.md (this file): Tracking current focus and next steps
-  - progress.md: Tracking project progress and status
+- Updated the color system to use a new palette that avoids brand conflicts
+- Implemented a new blue and gold color scheme:
+  - Blue Base (#1A4D7C): Primary brand color
+  - Blue Light (#2D6FAD): For accents and hover states
+  - Blue Lighter (#4A8FD1): For subtle highlights
+  - Blue Dark (#0F3356): For darker accents
+  - Gold Base (#FBBF24): Secondary brand color
+  - Gold Dark (#EAB308): For better contrast on dark backgrounds
+  - Gold Darker (#D4AC16): For stronger emphasis
+  - Gold Light (#FDE68A): For subtle accents
+- Improved contrast ratios across all color combinations to meet WCAG AA standards
+- Updated all CSS variables in global.css to use the new color values
+- Ensured consistent color application across light and dark modes
+- Updated color tokens in the design system
 
-- Set up GitHub project files:
-  - .gitignore: Configured for Node.js, Python, and system files
-  - README.md: Created comprehensive project overview
-  - CONTRIBUTING.md: Established contribution guidelines
-  - LICENSE: Added MIT license
-  - GitHub templates: Added issue and PR templates
-  - GitHub Actions: Set up CI workflow
+### Theme System Implementation
 
-- Created project structure:
-  - Monorepo setup with apps/ and packages/ directories
-  - Configuration files: package.json, tsconfig.json, ESLint, Prettier
-  - Docker setup: docker-compose.yml and Dockerfiles for services
-  - VSCode settings and recommended extensions
+- Created a global CSS file with CSS variables for theme colors
+- Implemented a ThemeContext for React to manage theme state
+- Added a ThemeToggle component for switching between light, dark, and system themes
+- Updated the Layout component to use theme variables and include the theme toggle
+- Modified the tailwind.config.js to use our theme CSS variables
+- Updated web app pages (Home, Activities, Profile) to use semantic color classes (text-text-primary, text-text-secondary, text-text-tertiary) instead of specific color classes (text-gray-900, text-gray-500, etc.)
 
-- Implemented basic API structure:
-  - FastAPI application with sample endpoints
-  - Requirements files for production and development
-  - Docker configuration
+### Component Architecture
 
-- Implemented basic web application structure:
-  - React/Vite setup with TypeScript
-  - Tailwind CSS configuration
-  - Component structure with layout and pages
-  - Basic routing setup
+- Building components with proper theming support using Tailwind CSS
+- Using semantic color names (primary, secondary, background, etc.) instead of specific colors
+- Ensuring all components respect the current theme
 
-### Active Decisions
+## Next Steps
 
-- Adopting a cross-platform approach with React Native (Expo) for mobile and React/Vite for web
-- Using Firebase for authentication and analytics
-- Implementing a token-based design system with Figma Tokens and Style Dictionary
-- Following atomic component design principles
-- Employing Zustand and React Query for state management and data fetching
-- Using Docker for local development environment
-- Implementing a monorepo structure for code sharing and management
+1. ✅ Test the new color system across all components to ensure proper contrast
+2. ✅ Update web pages to use theme-aware classes for proper dark mode support
+3. Fix remaining TypeScript errors in the React Router components
+4. Update the mobile app to use the same theming system and new color palette
+5. Create shared UI components that work across web and mobile
+6. Implement theme persistence using localStorage for web and AsyncStorage for mobile
+7. Add animations for theme transitions
 
-## 🧠 Key Insights & Patterns
+## Recent Fixes
 
-- The project aims to create a platform for youth athletes to track activities, earn achievements, and share their journey
-- Privacy and guardian controls are essential features for the target audience
-- GPS-based verified check-ins will be a core differentiator
-- The system needs to support various achievement types (badges, streaks, trophies, banners)
-- Social features must be designed with youth safety in mind
+- Fixed TypeScript errors in the NotFound.tsx file by replacing React Router's Link components with regular anchor tags
+- Successfully set up and ran Docker containers for the entire application (web, API, and database)
+- Verified the theming system works correctly in both light and dark modes across all pages
 
-## 🚀 Next Steps
+## Active Decisions
 
-1. Set up the initial project structure for both mobile and web platforms
-2. Implement the design token system to ensure consistent styling across platforms
-3. Create the authentication flow with Firebase, including guardian account linking
-4. Develop the core activity logging functionality with both manual entry and GPS verification
-5. Build the achievement system foundation
-6. Implement basic profile and ShowCase views
+- Using CSS variables for theming to allow for runtime theme switching
+- Implementing a ThemeProvider context to manage theme state
+- Using Tailwind CSS for styling with custom theme configuration
+- Keeping theme logic separate from UI components for better maintainability
+- Using a blue and gold color palette that meets accessibility standards and avoids brand conflicts
+- Implementing a semantic color system with primary, secondary, and tertiary text hierarchies
 
-## 🔄 Current Challenges
+## Important Patterns
 
-- Ensuring a consistent user experience across mobile and web platforms
-- Designing a flexible activity logging system that can accommodate various sports
-- Implementing robust privacy controls for minor accounts
-- Creating an engaging achievement system that motivates users
+- Theme variables follow a consistent naming convention:
+  - Base colors: background, foreground, card, etc.
+  - Semantic variations: primary, secondary, accent, etc.
+  - Foreground colors for contrast: primary-foreground, secondary-foreground, etc.
+  - Text hierarchy: text-primary, text-secondary, text-tertiary
+- Components should use semantic color names rather than specific colors
+- Theme toggle should be accessible and intuitive
+- Color contrast ratios should meet WCAG AA standards:
+  - Normal text (14px): 4.5:1 minimum contrast ratio
+  - Large text (18px+): 3:1 minimum contrast ratio
+  - UI components: 3:1 minimum contrast ratio
 
----
+## Learnings and Insights
 
-*Last updated: May 2, 2025*
+- CSS variables provide a powerful way to implement theming with runtime switching
+- Using a context provider pattern allows for clean theme management
+- Tailwind CSS can be extended to work well with CSS variables for theming
+- Semantic color naming improves maintainability and theme consistency
+- Ensuring proper color contrast is essential for accessibility and user experience
+- Using a consistent color system across platforms creates a cohesive brand experience
+- Separating brand colors from semantic UI colors allows for easier theme updates

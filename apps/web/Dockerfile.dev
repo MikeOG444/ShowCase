@@ -10,6 +10,8 @@ COPY vite.config.ts ./
 COPY tailwind.config.js ./
 COPY postcss.config.js ./
 COPY index.html ./
+# Copy root tsconfig.json to a more accessible location
+COPY ../../tsconfig.json ./root-tsconfig.json
 
 # Install dependencies
 RUN npm install

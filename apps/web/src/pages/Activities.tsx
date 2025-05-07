@@ -53,16 +53,20 @@ const ActivityCard = ({ activity }: { activity: Activity }) => {
   });
 
   return (
-    <div className="bg-white shadow overflow-hidden sm:rounded-md">
+    <div className="bg-card shadow overflow-hidden sm:rounded-md">
       <div className="px-4 py-5 sm:px-6">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-lg leading-6 font-medium text-gray-900">{activity.title}</h3>
-            <p className="mt-1 max-w-2xl text-sm text-gray-500">{activity.type}</p>
+            <h3 className="text-lg leading-6 font-medium text-text-primary">{activity.title}</h3>
+            <p className="mt-1 max-w-2xl text-sm text-text-secondary">{activity.type}</p>
           </div>
           {activity.isVerified && (
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-              <svg className="-ml-0.5 mr-1.5 h-2 w-2 text-green-400" fill="currentColor" viewBox="0 0 8 8">
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success/20 text-success">
+              <svg
+                className="-ml-0.5 mr-1.5 h-2 w-2 text-success"
+                fill="currentColor"
+                viewBox="0 0 8 8"
+              >
                 <circle cx="4" cy="4" r="3" />
               </svg>
               Verified
@@ -70,15 +74,33 @@ const ActivityCard = ({ activity }: { activity: Activity }) => {
           )}
         </div>
         <div className="mt-4 flex justify-between">
-          <div className="flex items-center text-sm text-gray-500">
-            <svg className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+          <div className="flex items-center text-sm text-text-secondary">
+            <svg
+              className="flex-shrink-0 mr-1.5 h-5 w-5 text-text-tertiary"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                clipRule="evenodd"
+              />
             </svg>
             {activity.location}
           </div>
-          <div className="flex items-center text-sm text-gray-500">
-            <svg className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+          <div className="flex items-center text-sm text-text-secondary">
+            <svg
+              className="flex-shrink-0 mr-1.5 h-5 w-5 text-text-tertiary"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                clipRule="evenodd"
+              />
             </svg>
             {formattedDate} at {formattedTime} ({activity.duration} min)
           </div>
@@ -95,23 +117,23 @@ const Activities = () => {
     <div className="py-10">
       <header>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold leading-tight text-gray-900">Activities</h1>
+          <h1 className="text-3xl font-bold leading-tight text-text-primary">Activities</h1>
         </div>
       </header>
       <main>
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div className="px-4 py-8 sm:px-0">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl font-semibold text-gray-900">Recent Activities</h2>
+              <h2 className="text-xl font-semibold text-text-primary">Recent Activities</h2>
               <button
                 type="button"
-                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-primary-foreground bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
               >
                 Log New Activity
               </button>
             </div>
             <div className="space-y-4">
-              {activities.map((activity) => (
+              {activities.map(activity => (
                 <ActivityCard key={activity.id} activity={activity} />
               ))}
             </div>

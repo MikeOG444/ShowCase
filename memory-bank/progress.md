@@ -1,88 +1,112 @@
-# 📊 progress.md
+# Progress
 
-This document tracks the development progress of the ShowCase project, including completed features, current status, known issues, and upcoming work. It provides a clear overview of what has been accomplished and what remains to be done.
+## What Works
 
----
+### Core Infrastructure
 
-## ✅ What Works
+- Monorepo setup with apps for web, mobile, and API
+- Shared packages for tokens, UI components, and utilities
+- Docker setup for development and production
+- CI/CD pipeline with GitHub Actions
 
-*The project is in the setup phase with the following components in place:*
+### Web Application
 
-- Project documentation and memory bank
-- GitHub project setup (templates, workflows, etc.)
-- Project structure and configuration files
-- Basic API structure with FastAPI
-- Basic web application structure with React/Vite and Tailwind CSS
+- Basic routing with React Router
+- Layout structure with navigation and footer
+- Lazy-loaded pages for better performance
+- React Query setup for data fetching
+- Comprehensive theming system with light/dark mode support
+- Theme toggle component with system preference detection
 
-## 🚧 Current Status
+### Mobile Application
 
-The ShowCase project is currently in the **project setup phase**. We have established the project vision, goals, and technical requirements through the memory bank documentation. We have also set up the initial project structure, including GitHub setup files, project configuration, and basic application structure for both the web and API components.
+- React Native setup with navigation
+- Basic screen structure
+- TypeScript integration
 
-### Project Setup Progress
+### API
 
-- ✅ Memory bank initialized with core documentation
-- ✅ Project repository setup
-- ✅ Development environment configuration
-- ✅ CI/CD pipeline setup (GitHub Actions)
-- ⬜ Design token system implementation
-- ⬜ Mobile app structure setup
+- FastAPI setup with basic endpoints
+- Development environment with Docker
 
-## 🔄 Evolution of Project Decisions
+## What's Left to Build
 
-| Date | Decision | Rationale |
-|------|----------|-----------|
-| May 2, 2025 | Initialized memory bank | To establish clear documentation and project context |
-| May 2, 2025 | Selected React Native (Expo) for mobile | To maximize code sharing and development efficiency |
-| May 2, 2025 | Chose FastAPI for backend | For performance, type safety, and developer experience |
-| May 2, 2025 | Implemented monorepo structure | To facilitate code sharing and consistent development practices |
-| May 2, 2025 | Set up Docker for development | To ensure consistent development environments across the team |
+### Theming System
 
-## 🛑 Known Issues
+- Fix TypeScript errors in React Router components
+- Implement theming for mobile application
+- Create shared UI components with theme support
+- Add animations for theme transitions
 
-*No known issues at this stage as implementation has not yet begun.*
+### Web Application
 
-## 📝 What's Left to Build
+- Complete page implementations
+- Add authentication flow
+- Implement data fetching from API
+- Create form components with validation
+- Add error handling and loading states
+- Implement responsive design for mobile views
 
-### Phase 1: Foundation (Next Up)
+### Mobile Application
 
-- [ ] Project structure setup (mobile and web)
-- [ ] Design token system
-- [ ] Authentication flow with Firebase
-- [ ] User profile creation and management
-- [ ] Basic navigation structure
+- Implement theming system matching web
+- Create screen implementations
+- Add authentication flow
+- Implement data fetching from API
+- Create native form components
+- Add error handling and loading states
 
-### Phase 2: Core Features
+### API
 
-- [ ] Activity logging (manual)
-- [ ] GPS-based verified check-ins
-- [ ] Basic achievement system
-- [ ] Profile and ShowCase views
-- [ ] Goal setting and tracking
+- Complete endpoint implementations
+- Add authentication and authorization
+- Implement database models and migrations
+- Add validation and error handling
+- Create documentation with Swagger/OpenAPI
 
-### Phase 3: Social & Sharing
+### Shared Components
 
-- [ ] Friend/follow functionality
-- [ ] Activity feed
-- [ ] Post creation and sharing
-- [ ] Comments and reactions
-- [ ] Privacy controls
+- Build UI component library
+- Create form components
+- Implement data visualization components
+- Add animation utilities
 
-### Phase 4: Advanced Features
+## Current Status
 
-- [ ] Guardian account linking
-- [ ] Coach and trainer profiles
-- [ ] Opportunities platform
-- [ ] Leaderboards
-- [ ] Advanced achievements and challenges
+We've made significant progress on the theming system for the web application. We've implemented:
 
-## 🔮 Future Considerations
+1. A global CSS file with CSS variables for theme colors
+2. A ThemeContext for React to manage theme state
+3. A ThemeToggle component for switching between themes
+4. Updated the Layout component to use theme variables
+5. Modified the tailwind.config.js to use our theme CSS variables
+6. Updated all web app pages (Home, Activities, Profile) to use semantic color classes (text-text-primary, text-text-secondary, text-text-tertiary) instead of specific color classes (text-gray-900, text-gray-500, etc.)
+7. Implemented a new color system with a blue and gold palette that meets accessibility standards
+8. Updated all CSS variables in global.css to use the new color values
+9. Added text hierarchy variables (primary, secondary, tertiary) for consistent typography
+10. Successfully set up and ran Docker containers for the entire application (web, API, and database)
+11. Verified the theming system works correctly in both light and dark modes across all pages
+12. Added button component classes in global.css for consistent styling
+13. Updated all web pages to use theme-aware classes for proper dark mode support
+14. Improved contrast in dark mode for better readability and accessibility
 
-- Integration with external sports platforms and APIs
-- Advanced analytics for performance tracking
-- Team management features
-- Event organization tools
-- Enhanced media capabilities (video highlights, etc.)
+We've fixed TypeScript errors in the NotFound.tsx file by replacing React Router's Link components with regular anchor tags. Next, we'll focus on extending the theming system to the mobile application and creating shared UI components.
 
----
+## Evolution of Project Decisions
 
-*Last updated: May 2, 2025*
+### Theming Approach
+
+- Initially considered using a CSS-in-JS solution
+- Decided on CSS variables with Tailwind for better performance and developer experience
+- Implemented a context-based theme provider for state management
+- Chose semantic color naming for better maintainability
+- Updated color system to use a blue and gold palette that avoids brand conflicts
+- Implemented a text hierarchy system with primary, secondary, and tertiary text variables
+- Ensured all color combinations meet WCAG AA accessibility standards
+
+### Component Architecture
+
+- Started with basic components without theming
+- Evolved to use semantic color names for better theme support
+- Implementing a more robust component system with proper theming
+- Planning to create shared components between web and mobile

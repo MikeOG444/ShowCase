@@ -1,0 +1,60 @@
+{
+  "source": ["tokens/**/*.json"],
+  "platforms": {
+    "web": {
+      "transformGroup": "web",
+      "buildPath": "dist/web/",
+      "files": [
+        {
+          "destination": "tokens.js",
+          "format": "javascript/module"
+        },
+        {
+          "destination": "tokens.json",
+          "format": "json"
+        }
+      ]
+    },
+    "tailwind": {
+      "transformGroup": "web",
+      "buildPath": "dist/tailwind/",
+      "files": [
+        {
+          "destination": "tailwind.config.js",
+          "format": "javascript/tailwind-config",
+          "options": {
+            "outputReferences": true
+          }
+        }
+      ]
+    },
+    "mobile": {
+      "transformGroup": "web",
+      "buildPath": "dist/mobile/",
+      "files": [
+        {
+          "destination": "tokens.js",
+          "format": "javascript/module"
+        },
+        {
+          "destination": "tokens.json",
+          "format": "json"
+        }
+      ]
+    },
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/css/",
+      "files": [
+        {
+          "destination": "variables.css",
+          "format": "css/variables"
+        },
+        {
+          "destination": "theme.css",
+          "format": "css/theme-variables"
+        }
+      ]
+    }
+  }
+}

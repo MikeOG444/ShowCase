@@ -1,0 +1,24 @@
+{
+  "name": "@showcase/tokens",
+  "version": "0.1.0",
+  "description": "Design tokens for the ShowCase platform",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "node build.js && tsc",
+    "clean": "rimraf dist",
+    "dev": "node build.js --watch",
+    "prebuild": "npm run clean"
+  },
+  "dependencies": {
+    "color": "^4.2.3",
+    "style-dictionary": "^3.8.0"
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.1",
+    "typescript": "^5.0.4"
+  }
+}
