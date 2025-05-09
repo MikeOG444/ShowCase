@@ -1,104 +1,50 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, ScrollView } from '../lib/nativewind';
+import { View } from '@showcase/ui';
+import { Text } from '@showcase/ui';
+import { ThemeToggle } from '../components/ThemeToggle';
 
 export default function HomeScreen() {
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        <View style={styles.header}>
-          <Text style={styles.title}>Welcome to ShowCase</Text>
-          <Text style={styles.subtitle}>Track, Earn, and Share your sports journey</Text>
+    <SafeAreaView className="flex-1 bg-background">
+      <ScrollView className="p-4">
+        <View className="flex-row justify-between items-center mb-6">
+          <Text className="text-2xl font-bold text-foreground">Welcome to ShowCase</Text>
+          <ThemeToggle />
         </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Recent Activities</Text>
-          <View style={styles.activityCard}>
-            <Text style={styles.activityTitle}>No activities yet</Text>
-            <Text style={styles.activitySubtitle}>Start tracking your sports journey</Text>
+        <Text className="text-base text-foreground/70 mb-6">
+          Track, Earn, and Share your sports journey
+        </Text>
+
+        <View className="mb-6">
+          <Text className="text-xl font-bold text-foreground mb-3" variant="label" weight="bold">
+            Recent Activities
+          </Text>
+          <View className="bg-card rounded-lg p-4 shadow">
+            <Text className="text-lg font-bold text-foreground mb-1" variant="body" weight="bold">
+              No activities yet
+            </Text>
+            <Text className="text-foreground/70" variant="body" color="secondary">
+              Start tracking your sports journey
+            </Text>
           </View>
         </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Your Achievements</Text>
-          <View style={styles.achievementCard}>
-            <Text style={styles.achievementTitle}>No achievements yet</Text>
-            <Text style={styles.achievementSubtitle}>Complete activities to earn achievements</Text>
+        <View className="mb-6">
+          <Text className="text-xl font-bold text-foreground mb-3" variant="label" weight="bold">
+            Your Achievements
+          </Text>
+          <View className="bg-card rounded-lg p-4 shadow">
+            <Text className="text-lg font-bold text-foreground mb-1" variant="body" weight="bold">
+              No achievements yet
+            </Text>
+            <Text className="text-foreground/70" variant="body" color="secondary">
+              Complete activities to earn achievements
+            </Text>
           </View>
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f8f9fa',
-  },
-  scrollContent: {
-    padding: 16,
-  },
-  header: {
-    marginBottom: 24,
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 8,
-  },
-  subtitle: {
-    fontSize: 16,
-    color: '#666',
-  },
-  section: {
-    marginBottom: 24,
-  },
-  sectionTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 12,
-  },
-  activityCard: {
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    padding: 16,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
-  },
-  activityTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 4,
-  },
-  activitySubtitle: {
-    fontSize: 14,
-    color: '#666',
-  },
-  achievementCard: {
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    padding: 16,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
-  },
-  achievementTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 4,
-  },
-  achievementSubtitle: {
-    fontSize: 14,
-    color: '#666',
-  },
-});

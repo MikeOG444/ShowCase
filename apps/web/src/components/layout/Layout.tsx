@@ -1,4 +1,6 @@
-import { Outlet, Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import AppLink from '@components/ui/AppLink';
+import AppOutlet from '@components/ui/AppOutlet';
 import { ThemeToggle } from '@components/ThemeToggle';
 
 const Navigation = () => {
@@ -16,35 +18,35 @@ const Navigation = () => {
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
-              <Link to="/" className="text-2xl font-bold text-primary">
+              <AppLink to="/" className="text-2xl font-bold text-primary">
                 ShowCase
-              </Link>
+              </AppLink>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-              <Link
+              <AppLink
                 to="/"
                 className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${isActive(
                   '/'
                 )}`}
               >
                 Home
-              </Link>
-              <Link
+              </AppLink>
+              <AppLink
                 to="/activities"
                 className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${isActive(
                   '/activities'
                 )}`}
               >
                 Activities
-              </Link>
-              <Link
+              </AppLink>
+              <AppLink
                 to="/profile"
                 className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${isActive(
                   '/profile'
                 )}`}
               >
                 Profile
-              </Link>
+              </AppLink>
             </div>
           </div>
           <div className="hidden sm:ml-6 sm:flex sm:items-center">
@@ -141,7 +143,7 @@ const Layout = () => {
       <Navigation />
       <main className="flex-grow">
         <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-          <Outlet />
+          <AppOutlet />
         </div>
       </main>
       <Footer />

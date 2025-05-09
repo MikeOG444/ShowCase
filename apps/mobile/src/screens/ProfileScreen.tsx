@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, ScrollView } from '../lib/nativewind';
+import { View, Text, Pressable } from '@showcase/ui';
+import { ThemeToggle } from '../components/ThemeToggle';
 
 // Mock user data
 const mockUser = {
@@ -17,12 +18,19 @@ const mockUser = {
 
 export default function ProfileScreen() {
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        <View style={styles.header}>
-          <View style={styles.profileImageContainer}>
-            <View style={styles.profileImage}>
-              <Text style={styles.profileInitials}>
+    <SafeAreaView className="flex-1 bg-background">
+      <ScrollView className="p-4">
+        <View className="flex-row justify-between items-start mb-4">
+          <View>
+            <Text>{'\u00A0'}</Text>
+          </View>
+          <ThemeToggle />
+        </View>
+
+        <View className="items-center mb-6">
+          <View className="mb-4">
+            <View className="w-24 h-24 rounded-full bg-primary justify-center items-center">
+              <Text className="text-3xl font-bold text-primary-foreground">
                 {mockUser.name
                   .split(' ')
                   .map(name => name[0])
@@ -31,201 +39,64 @@ export default function ProfileScreen() {
             </View>
           </View>
 
-          <Text style={styles.name}>{mockUser.name}</Text>
-          <Text style={styles.username}>{mockUser.username}</Text>
+          <Text className="text-2xl font-bold text-foreground mb-1">{mockUser.name}</Text>
+          <Text className="text-base text-foreground/70 mb-3">{mockUser.username}</Text>
 
-          <View style={styles.sportInfo}>
-            <Text style={styles.sportInfoText}>{mockUser.sport}</Text>
-            <Text style={styles.sportInfoDot}>•</Text>
-            <Text style={styles.sportInfoText}>{mockUser.position}</Text>
-            <Text style={styles.sportInfoDot}>•</Text>
-            <Text style={styles.sportInfoText}>{mockUser.team}</Text>
+          <View className="flex-row items-center mb-4">
+            <Text className="text-sm text-foreground">{mockUser.sport}</Text>
+            <Text className="mx-1.5 text-foreground/50">•</Text>
+            <Text className="text-sm text-foreground">{mockUser.position}</Text>
+            <Text className="mx-1.5 text-foreground/50">•</Text>
+            <Text className="text-sm text-foreground">{mockUser.team}</Text>
           </View>
 
-          <View style={styles.statsContainer}>
-            <View style={styles.statItem}>
-              <Text style={styles.statValue}>{mockUser.achievements}</Text>
-              <Text style={styles.statLabel}>Achievements</Text>
+          <View className="flex-row justify-around w-full mb-4">
+            <View className="items-center">
+              <Text className="text-lg font-bold text-foreground">{mockUser.achievements}</Text>
+              <Text className="text-xs text-foreground/70">Achievements</Text>
             </View>
-            <View style={styles.statItem}>
-              <Text style={styles.statValue}>{mockUser.activities}</Text>
-              <Text style={styles.statLabel}>Activities</Text>
+            <View className="items-center">
+              <Text className="text-lg font-bold text-foreground">{mockUser.activities}</Text>
+              <Text className="text-xs text-foreground/70">Activities</Text>
             </View>
-            <View style={styles.statItem}>
-              <Text style={styles.statValue}>{mockUser.followers}</Text>
-              <Text style={styles.statLabel}>Followers</Text>
+            <View className="items-center">
+              <Text className="text-lg font-bold text-foreground">{mockUser.followers}</Text>
+              <Text className="text-xs text-foreground/70">Followers</Text>
             </View>
-            <View style={styles.statItem}>
-              <Text style={styles.statValue}>{mockUser.following}</Text>
-              <Text style={styles.statLabel}>Following</Text>
+            <View className="items-center">
+              <Text className="text-lg font-bold text-foreground">{mockUser.following}</Text>
+              <Text className="text-xs text-foreground/70">Following</Text>
             </View>
           </View>
 
-          <TouchableOpacity style={styles.editButton}>
-            <Text style={styles.editButtonText}>Edit Profile</Text>
-          </TouchableOpacity>
+          <Pressable className="border border-primary rounded-lg px-4 py-2">
+            <Text className="text-primary font-bold">Edit Profile</Text>
+          </Pressable>
         </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Your ShowCase</Text>
-          <View style={styles.emptyShowcase}>
-            <Text style={styles.emptyTitle}>No achievements yet</Text>
-            <Text style={styles.emptySubtitle}>
+        <View className="mb-6">
+          <Text className="text-xl font-bold text-foreground mb-3">Your ShowCase</Text>
+          <View className="bg-card rounded-lg p-6 items-center shadow">
+            <Text className="text-lg font-bold text-foreground mb-2">No achievements yet</Text>
+            <Text className="text-sm text-foreground/70 text-center">
               Complete activities to earn badges, streaks, and trophies
             </Text>
           </View>
         </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Recent Activities</Text>
-          <View style={styles.emptyActivities}>
-            <Text style={styles.emptyTitle}>No activities yet</Text>
-            <Text style={styles.emptySubtitle}>
+        <View className="mb-6">
+          <Text className="text-xl font-bold text-foreground mb-3">Recent Activities</Text>
+          <View className="bg-card rounded-lg p-6 items-center shadow">
+            <Text className="text-lg font-bold text-foreground mb-2">No activities yet</Text>
+            <Text className="text-sm text-foreground/70 text-center mb-4">
               Start tracking your sports journey
             </Text>
-            <TouchableOpacity style={styles.addButton}>
-              <Text style={styles.addButtonText}>Add Activity</Text>
-            </TouchableOpacity>
+            <Pressable className="bg-primary px-6 py-3 rounded-lg">
+              <Text className="text-primary-foreground text-base font-bold">Add Activity</Text>
+            </Pressable>
           </View>
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f8f9fa',
-  },
-  scrollContent: {
-    padding: 16,
-  },
-  header: {
-    alignItems: 'center',
-    marginBottom: 24,
-  },
-  profileImageContainer: {
-    marginBottom: 16,
-  },
-  profileImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    backgroundColor: '#007bff',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  profileInitials: {
-    fontSize: 36,
-    fontWeight: 'bold',
-    color: '#fff',
-  },
-  name: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 4,
-  },
-  username: {
-    fontSize: 16,
-    color: '#666',
-    marginBottom: 12,
-  },
-  sportInfo: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
-  sportInfoText: {
-    fontSize: 14,
-    color: '#333',
-  },
-  sportInfoDot: {
-    marginHorizontal: 6,
-    color: '#666',
-  },
-  statsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '100%',
-    marginBottom: 16,
-  },
-  statItem: {
-    alignItems: 'center',
-  },
-  statValue: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#333',
-  },
-  statLabel: {
-    fontSize: 12,
-    color: '#666',
-  },
-  editButton: {
-    borderWidth: 1,
-    borderColor: '#007bff',
-    borderRadius: 8,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-  },
-  editButtonText: {
-    color: '#007bff',
-    fontWeight: 'bold',
-  },
-  section: {
-    marginBottom: 24,
-  },
-  sectionTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 12,
-  },
-  emptyShowcase: {
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    padding: 24,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
-  },
-  emptyActivities: {
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    padding: 24,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
-  },
-  emptyTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 8,
-  },
-  emptySubtitle: {
-    fontSize: 14,
-    color: '#666',
-    textAlign: 'center',
-    marginBottom: 16,
-  },
-  addButton: {
-    backgroundColor: '#007bff',
-    paddingHorizontal: 24,
-    paddingVertical: 12,
-    borderRadius: 8,
-  },
-  addButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-});

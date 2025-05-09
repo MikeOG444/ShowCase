@@ -1,121 +1,60 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, FlatList } from '../lib/nativewind';
+import { View, Text, Pressable } from '@showcase/ui';
+import { ThemeToggle } from '../components/ThemeToggle';
+
+// Define activity type
+interface Activity {
+  id: string;
+  title: string;
+  date: string;
+  description: string;
+}
 
 // Mock data for activities
-const mockActivities = [
+const mockActivities: Activity[] = [
   // Empty for now
 ];
 
 export default function ActivitiesScreen() {
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Activities</Text>
-        <Text style={styles.subtitle}>Track your sports journey</Text>
+    <SafeAreaView className="flex-1 bg-background">
+      <View className="p-4 flex-row justify-between items-center">
+        <View>
+          <Text className="text-2xl font-bold text-foreground mb-2">Activities</Text>
+          <Text className="text-base text-foreground/70">Track your sports journey</Text>
+        </View>
+        <ThemeToggle />
       </View>
 
       {mockActivities.length > 0 ? (
         <FlatList
           data={mockActivities}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => (
-            <View style={styles.activityCard}>
-              <Text style={styles.activityTitle}>{item.title}</Text>
-              <Text style={styles.activityDate}>{item.date}</Text>
-              <Text style={styles.activityDescription}>{item.description}</Text>
-            </View>
-          )}
-          contentContainerStyle={styles.listContent}
+          renderItem={({ item }) => {
+            // Type assertion
+            const activity = item as Activity;
+            return (
+              <View className="bg-card rounded-lg p-4 mb-3 mx-4 shadow">
+                <Text className="text-lg font-bold text-foreground mb-1">{activity.title}</Text>
+                <Text className="text-sm text-foreground/70 mb-2">{activity.date}</Text>
+                <Text className="text-foreground/80">{activity.description}</Text>
+              </View>
+            );
+          }}
+          className="flex-1"
         />
       ) : (
-        <View style={styles.emptyContainer}>
-          <Text style={styles.emptyTitle}>No activities yet</Text>
-          <Text style={styles.emptySubtitle}>Start tracking your sports activities</Text>
-          <TouchableOpacity style={styles.addButton}>
-            <Text style={styles.addButtonText}>Add Activity</Text>
-          </TouchableOpacity>
+        <View className="flex-1 justify-center items-center p-4">
+          <Text className="text-xl font-bold text-foreground mb-2">No activities yet</Text>
+          <Text className="text-base text-foreground/70 mb-6 text-center">
+            Start tracking your sports activities
+          </Text>
+          <Pressable className="bg-primary px-6 py-3 rounded-lg">
+            <Text className="text-primary-foreground font-bold text-base">Add Activity</Text>
+          </Pressable>
         </View>
       )}
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f8f9fa',
-  },
-  header: {
-    padding: 16,
-    marginBottom: 8,
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 8,
-  },
-  subtitle: {
-    fontSize: 16,
-    color: '#666',
-  },
-  listContent: {
-    padding: 16,
-  },
-  activityCard: {
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    padding: 16,
-    marginBottom: 12,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
-  },
-  activityTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 4,
-  },
-  activityDate: {
-    fontSize: 14,
-    color: '#666',
-    marginBottom: 8,
-  },
-  activityDescription: {
-    fontSize: 14,
-    color: '#333',
-  },
-  emptyContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 16,
-  },
-  emptyTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 8,
-  },
-  emptySubtitle: {
-    fontSize: 16,
-    color: '#666',
-    marginBottom: 24,
-    textAlign: 'center',
-  },
-  addButton: {
-    backgroundColor: '#007bff',
-    paddingHorizontal: 24,
-    paddingVertical: 12,
-    borderRadius: 8,
-  },
-  addButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-});

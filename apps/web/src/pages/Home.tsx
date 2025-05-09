@@ -1,4 +1,4 @@
-// Using regular anchor tags instead of Link to avoid TypeScript errors
+import AppLink from '@components/ui/AppLink';
 
 const Home = () => {
   return (
@@ -19,12 +19,12 @@ const Home = () => {
                   their sports journey.
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
-                  <a href="/activities" className="btn-primary">
+                  <AppLink to="/activities" className="btn-primary">
                     Log an Activity
-                  </a>
-                  <a href="/profile" className="btn-secondary">
+                  </AppLink>
+                  <AppLink to="/profile" className="btn-secondary">
                     View Your Profile
-                  </a>
+                  </AppLink>
                 </div>
               </div>
 

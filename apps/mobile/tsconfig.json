@@ -17,7 +17,9 @@
       "@navigation/*": ["src/navigation/*"],
       "@hooks/*": ["src/hooks/*"],
       "@utils/*": ["src/utils/*"],
-      "@assets/*": ["assets/*"]
+      "@assets/*": ["assets/*"],
+      "@showcase/ui": ["../../packages/ui/src"],
+      "@showcase/ui/*": ["../../packages/ui/src/*"]
     }
   },
   "include": ["src", "**/*.ts", "**/*.tsx"],

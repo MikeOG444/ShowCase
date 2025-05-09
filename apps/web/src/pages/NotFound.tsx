@@ -1,4 +1,4 @@
-// Using regular anchor tags instead of Link to avoid TypeScript errors
+import AppLink from '@components/ui/AppLink';
 
 const NotFound = () => {
   return (
@@ -16,12 +16,12 @@ const NotFound = () => {
               </p>
             </div>
             <div className="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
-              <a href="/" className="btn-primary">
+              <AppLink to="/" className="btn-primary">
                 Go back home
-              </a>
-              <a href="/activities" className="btn-secondary">
+              </AppLink>
+              <AppLink to="/activities" className="btn-secondary">
                 View activities
-              </a>
+              </AppLink>
             </div>
           </div>
         </main>
